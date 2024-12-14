@@ -1,0 +1,48 @@
+
+type Query {
+    getUser(userId: Int): User
+    getAllUsers: [User]
+}
+
+
+type User {
+    id: Int
+    username: String
+    address: Address
+    phoneNumber: PhoneNumber
+}
+
+input UserInput {
+    id: Int
+    username: String
+    address: AddressInput
+    phoneNumber: PhoneNumberInput
+}
+
+
+type PhoneNumber {
+    id: ID
+    primaryPhoneNumber: String
+    secondaryPhoneNumber: [String]
+}
+input PhoneNumberInput {
+    id: ID
+    primaryPhoneNumber: String
+    secondaryPhoneNumber: [String]
+}
+type Address {
+    id: ID
+    primaryAddress: String
+    secondaryAddress: [String]
+}
+input AddressInput {
+    id: ID
+    primaryAddress: String
+    secondaryAddress: [String]
+}
+
+type  Mutation{
+    createUser(user: UserInput!):User
+    deleteUser(userId: Int): Boolean
+    updateUser(user:UserInput):Boolean
+}
